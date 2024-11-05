@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\repo\org\xerial\sqlite-jdbc\3.36.0.3\sqlite-jdbc-3.36.0.3.jar"/>
+
+    <context id="SQLiteTables" targetRuntime="MyBatis3">
+        <!-- JavaBean 实现 序列化 接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+        </plugin>
+        <!-- 消除插件自动生成的注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="org.sqlite.JDBC"
+                        connectionURL="jdbc:sqlite:C:\Users\\Administrator\.MooTool\MooTool.db">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <!-- Model文件保存位置 -->
+        <javaModelGenerator targetPackage="com.luoboduner.moo.tool.domain"
+                            targetProject="D:\Learn\项目\自学项目\MooTool\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成的mapper文件 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="D:\Learn\项目\自学项目\MooTool\src\main\resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成的查询条件的类 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.luoboduner.moo.tool.dao"
+                             targetProject="D:\Learn\项目\自学项目\MooTool\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table schema="main" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"
+               tableName="t_favorite_regex_item" domainObjectName="TFavoriteRegexItem">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true"/>-->
+        </table>
+
+    </context>
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/mydatabase?serverTimezone=UTC"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="your_password"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+</generatorConfiguration>

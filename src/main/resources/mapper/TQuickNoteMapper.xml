@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luoboduner.moo.tool.dao.TQuickNoteMapper">
+    <resultMap id="BaseResultMap" type="com.luoboduner.moo.tool.domain.TQuickNote">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="modified_time" jdbcType="VARCHAR" property="modifiedTime"/>
+        <result column="color" jdbcType="VARCHAR" property="color"/>
+        <result column="style" jdbcType="VARCHAR" property="style"/>
+        <result column="font_name" jdbcType="VARCHAR" property="fontName"/>
+        <result column="font_size" jdbcType="VARCHAR" property="fontSize"/>
+        <result column="syntax" jdbcType="VARCHAR" property="syntax"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, content, create_time, modified_time, color, style, font_name, font_size,
+    syntax
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_quick_note
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from t_quick_note
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.luoboduner.moo.tool.domain.TQuickNote">
+        insert into t_quick_note (id, name, content,
+                                  create_time, modified_time, color,
+                                  style, font_name, font_size,
+                                  syntax)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR},
+                #{createTime,jdbcType=VARCHAR}, #{modifiedTime,jdbcType=VARCHAR}, #{color,jdbcType=VARCHAR},
+                #{style,jdbcType=VARCHAR}, #{fontName,jdbcType=VARCHAR}, #{fontSize,jdbcType=VARCHAR},
+                #{syntax,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.luoboduner.moo.tool.domain.TQuickNote">
+        insert into t_quick_note
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifiedTime != null">
+                modified_time,
+            </if>
+            <if test="color != null">
+                color,
+            </if>
+            <if test="style != null">
+                style,
+            </if>
+            <if test="fontName != null">
+                font_name,
+            </if>
+            <if test="fontSize != null">
+                font_size,
+            </if>
+            <if test="syntax != null">
+                syntax,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="modifiedTime != null">
+                #{modifiedTime,jdbcType=VARCHAR},
+            </if>
+            <if test="color != null">
+                #{color,jdbcType=VARCHAR},
+            </if>
+            <if test="style != null">
+                #{style,jdbcType=VARCHAR},
+            </if>
+            <if test="fontName != null">
+                #{fontName,jdbcType=VARCHAR},
+            </if>
+            <if test="fontSize != null">
+                #{fontSize,jdbcType=VARCHAR},
+            </if>
+            <if test="syntax != null">
+                #{syntax,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.luoboduner.moo.tool.domain.TQuickNote">
+        update t_quick_note
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=VARCHAR},
+            </if>
+            <if test="color != null">
+                color = #{color,jdbcType=VARCHAR},
+            </if>
+            <if test="style != null">
+                style = #{style,jdbcType=VARCHAR},
+            </if>
+            <if test="fontName != null">
+                font_name = #{fontName,jdbcType=VARCHAR},
+            </if>
+            <if test="fontSize != null">
+                font_size = #{fontSize,jdbcType=VARCHAR},
+            </if>
+            <if test="syntax != null">
+                syntax = #{syntax,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.luoboduner.moo.tool.domain.TQuickNote">
+        update t_quick_note
+        set name          = #{name,jdbcType=VARCHAR},
+            content       = #{content,jdbcType=VARCHAR},
+            create_time   = #{createTime,jdbcType=VARCHAR},
+            modified_time = #{modifiedTime,jdbcType=VARCHAR},
+            color         = #{color,jdbcType=VARCHAR},
+            style         = #{style,jdbcType=VARCHAR},
+            font_name     = #{fontName,jdbcType=VARCHAR},
+            font_size     = #{fontSize,jdbcType=VARCHAR},
+            syntax        = #{syntax,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_quick_note
+        order by modified_time desc
+    </select>
+    <select id="selectByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_quick_note
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAllByFilter" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_quick_note
+        where name like #{titleFilterKeyWord,jdbcType=VARCHAR}
+        order by modified_time desc
+    </select>
+    <update id="updateByName" parameterType="com.luoboduner.moo.tool.domain.TQuickNote">
+        update t_quick_note
+        <set>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=VARCHAR},
+            </if>
+            <if test="color != null">
+                color = #{color,jdbcType=VARCHAR},
+            </if>
+            <if test="style != null">
+                style = #{style,jdbcType=VARCHAR},
+            </if>
+            <if test="fontName != null">
+                font_name = #{fontName,jdbcType=VARCHAR},
+            </if>
+            <if test="fontSize != null">
+                font_size = #{fontSize,jdbcType=VARCHAR},
+            </if>
+            <if test="syntax != null">
+                syntax = #{syntax,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where name = #{name,jdbcType=INTEGER}
+    </update>
+    <update id="updateAll" parameterType="com.luoboduner.moo.tool.domain.TQuickNote">
+        update t_quick_note
+        <set>
+            <if test="modifiedTime != null">
+                modified_time = #{modifiedTime,jdbcType=VARCHAR},
+            </if>
+            <if test="color != null">
+                color = #{color,jdbcType=VARCHAR},
+            </if>
+            <if test="style != null">
+                style = #{style,jdbcType=VARCHAR},
+            </if>
+            <if test="fontName != null">
+                font_name = #{fontName,jdbcType=VARCHAR},
+            </if>
+            <if test="fontSize != null">
+                font_size = #{fontSize,jdbcType=VARCHAR},
+            </if>
+            <if test="syntax != null">
+                syntax = #{syntax,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where 1 = 1
+    </update>
+</mapper>
